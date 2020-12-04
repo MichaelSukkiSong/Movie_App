@@ -19,3 +19,79 @@ a {
 img {
   border: 0;
 }
+
+/* body */
+
+body {
+  background-color: rgb(7, 7, 56);
+}
+
+/* header-section */
+
+.header-section {
+  background-color: rgba(6, 6, 46, 0.815);
+  height: 50px;
+  width: 100%;
+}
+
+.search-form {
+  float: right;
+  line-height: 50px;
+  padding-right: 50px;
+}
+
+.search-form input {
+  border-radius: 20px;
+  height: 30px;
+  padding-left: 20px;
+  color: antiquewhite;
+  background-color: rgba(6, 6, 46, 0.815);
+  border: 1px solid rgba(255, 255, 255, 0.432);
+}
+
+.search-btn {
+  color: antiquewhite;
+  background-color: rgba(6, 6, 46, 0.815);
+  border: none;
+  font-size: medium;
+  margin-top: 10px;
+}
+
+/* card-container */
+
+.card-container {
+  padding: 10px 10px 10px 10px;
+}
+
+/* card */
+
+.card {
+  float: left;
+  width: 350px;
+  height: 450px;
+  border: 1px solid rgba(255, 255, 255, 0.432);
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 2px #12092b;
+  background-color: rgb(29, 29, 88);
+  border: none;
+}
+
+.card-top img {
+  width: 350px;
+  height: 350px;
+}
+
+.movie-title {
+  color: antiquewhite;
+  float: left;
+  line-height: 60px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.movie-mark {
+  float: right;
+  line-height: 90px;
+  padding-right: 20px;
+}
