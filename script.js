@@ -27,7 +27,7 @@ const getMovieData = async () => {
 }
 
 const searchMovie = async (query) => {
-    // console.log(query)
+    console.log(query)
     const result = await fetch(SEARCHAPI+query);
     const data = await result.json();
     const searchResult = data.results;
@@ -74,7 +74,8 @@ const displayMovies = (data) => {
 
 const constrolSearch = () => {
     // get input
-    const input = element.searchInput.value;
+    const input = elements.searchInput.value;
+    console.log(input);
     // search query from api and return data
     // display data
     searchMovie(input).then(data => displayMovies(data));
@@ -90,13 +91,15 @@ const clearInputField = () => {
 
 getMovieData().then(data => displayMovies(data));
 
+/* search button */
+
 elements.searhForm.addEventListener("submit", e => {
     e.preventDefault();
     // clear container
     clearContainer();
-    // claer input field
-    clearInputField();
     // control search
     constrolSearch();
+    // claer input field
+    clearInputField();
 })
 
