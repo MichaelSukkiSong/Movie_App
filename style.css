@@ -55,12 +55,16 @@ body {
 }
 
 .search-form input {
-  border-radius: 20px;
+  border-radius: 30px;
   height: 30px;
   padding-left: 20px;
   color: antiquewhite;
-  background-color: rgba(6, 6, 46, 0.815);
-  border: 1px solid rgba(255, 255, 255, 0.432);
+  background-color: transparent;
+  border: 3px solid rgba(255, 255, 255, 0.432);
+}
+
+.search-form input:focus {
+  outline: none;
 }
 
 .search-btn {
@@ -91,6 +95,7 @@ body {
   box-shadow: 0 0 10px 2px #12092b;
   background-color: rgb(29, 29, 88);
   border: none;
+  position: relative;
 }
 
 .card-top img {
@@ -131,6 +136,7 @@ body {
 .movie-overview {
   display: none;
   z-index: 999;
+  position: absolute;
 
   width: 300px;
   height: auto;
