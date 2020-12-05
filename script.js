@@ -13,16 +13,19 @@ const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5
 
 elements = {
     cardContainer: document.querySelector(".card-container"),
+    card: document.querySelector(".card"),
     movieMark: document.querySelector(".movie-mark"),
     searchInput: document.querySelector(".search-input"),
     searhForm: document.querySelector(".search-form"),
+    frontDisplay: document.querySelector(".front-display"),
+    movieOverview: document.querySelector(".movie-overview"),
 }
 
 const getMovieData = async () => {
     const result = await fetch(APIURL);
     const data = await result.json();
     const moviesData = data.results;
-    // console.log(moviesData)
+    console.log(moviesData)
     return moviesData;
 }
 
@@ -48,27 +51,42 @@ const voteNumColor = (num) => {
     }
 }
 
+function myOverFunc(x) {
+    x.querySelector(".movie-overview").style.display = 'block';
+    x.querySelector(".movie-img").style.opacity = 0.1;
+}
+
+function myLeaveFunc(x) {
+    x.querySelector(".movie-overview").style.display = 'none';
+    x.querySelector(".movie-img").style.opacity = 1;
+
+}
+
+
 const displayMovies = (data) => {
     let new_html = '';
     for (let i=0; i < data.length; i++) {
         const color = voteNumColor(data[i].vote_average);
         const html = `
-            <div class="card">
-                <div class="card-top">
-                    <a href="#">
-                    <img src=${IMGPATH}${data[i].poster_path} alt=${data[i].title}>
-                    </a>
-                </div>
-                <div class="card-bottom">
-                    <a href="#">
-                       <span class="movie-title">${data[i].title}</span>
-                    </a>
-                    <div class="movie-mark-container">
-                        <div class="movie-mark ${color}">${data[i].vote_average}</div>
+            <div class="card" onmouseover="myOverFunc(this)" onmouseleave="myLeaveFunc(this)">
+                <div class="front-display">
+                    <div class="card-top">
+                        <a href="#">
+                        <img src=${IMGPATH}${data[i].poster_path} alt=${data[i].title} class="movie-img">
+                        </a>
+                    </div>
+                    <div class="card-bottom">
+                        <a href="#">
+                        <span class="movie-title">${data[i].title}</span>
+                        </a>
+                        <div class="movie-mark-container">
+                            <div class="movie-mark ${color}">${data[i].vote_average}</div>
+                        </div>
                     </div>
                 </div>
+                <div class="movie-overview">Overview: </br> ${data[i].overview}</div>
             </div>
-            `;
+        `;
             new_html += html;
     }
     elements.cardContainer.insertAdjacentHTML("beforeend", new_html);
@@ -91,6 +109,7 @@ const clearInputField = () => {
     elements.searchInput.value = '';
 }
 
+
 getMovieData().then(data => displayMovies(data));
 
 /* search button */
@@ -104,4 +123,3 @@ elements.searhForm.addEventListener("submit", e => {
     // claer input field
     clearInputField();
 })
-
