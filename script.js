@@ -63,7 +63,9 @@ const displayMovies = (data) => {
                     <a href="#">
                        <span class="movie-title">${data[i].title}</span>
                     </a>
-                    <div class="movie-mark ${color}">${data[i].vote_average}</div>
+                    <div class="movie-mark-container">
+                        <div class="movie-mark ${color}">${data[i].vote_average}</div>
+                    </div>
                 </div>
             </div>
             `;
